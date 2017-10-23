@@ -54,7 +54,7 @@ body, .app {
   height: 50px;
   border-radius: 50%;
   background: #2e7d32;
-  background-image: url('./icons/add.svg');
+  background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
@@ -92,7 +92,7 @@ body, .app {
   width: 50px;
   height: 53px;
   background: white;
-  background-image: url('./icons/arrow-back.svg');
+  background-image: url('../icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
@@ -103,6 +103,17 @@ body, .app {
   padding: 80px 10px 20px;
 }
 
+.no-results {
+  text-align: center;
+  color: #666;
+}
+
+.no-results small {
+  color: #848484;
+  display: block;
+  width: 80%;
+  margin: auto;
+}
 /* books grid */
 
 .books-grid {
@@ -148,7 +159,7 @@ body, .app {
   height: 40px;
   border-radius: 50%;
   background: #60ac5d;
-  background-image: url('./icons/arrow-drop-down.svg');
+  background-image: url('../icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
@@ -166,6 +177,8 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  width: 128px;
+  height: 188px;
 }
 .book-cover-title {
   padding: 20px 10px 0;
