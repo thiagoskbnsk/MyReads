@@ -3,12 +3,8 @@ import React, { Component } from 'react'
 import BookOptions from './bookOptions'
 
 class ItemList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      category: ''
-    }
-    this.handleClick = this.handleClick.bind(this)
+  state = {
+    category: ''
   }
 
   componentDidMount() {
@@ -34,9 +30,9 @@ class ItemList extends Component {
             </div>
           </div>
           <div className="book-title">{this.props.title}</div>
-          {this.props.authors.map((a) => (
-            <div className="book-authors" key={a}>{a}</div>
-          ))}
+            {this.props.authors.map((a, item) => (
+              <div className="book-authors" key={item}>{a}</div>
+            ))}
         </div>
       </li>
     )

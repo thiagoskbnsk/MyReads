@@ -6,7 +6,7 @@ class BookOptions extends Component {
     const categories = [
       {
         name: 'Move to...',
-        value: 'none',
+        value: '',
         disabled: true
       },
       {

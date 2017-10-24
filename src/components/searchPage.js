@@ -18,7 +18,7 @@ class SearchPage extends Component {
           <ol className="books-grid">
             {this.props.books ? (
               this.props.books.sort(sortBy('title')).map((b) => (
-                <ItemList title={b.title} authors={b.authors} image={b.imageLinks.thumbnail} key={b.id} id={b.id} category={b.shelf} book={b} onUpdateBook={this.props.onUpdateBook}/>
+                  <ItemList title={b.title} authors={[b.authors]} image={b.imageLinks.thumbnail} key={b.id} id={b.id} category={b.shelf ? b.shelf : 'none'} book={b} onUpdateBook={this.props.onUpdateBook}/>
               ))
             ) : (
               <div className="no-results">
