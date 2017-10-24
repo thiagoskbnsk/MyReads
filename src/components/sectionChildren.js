@@ -5,7 +5,7 @@ import SectionCategory from './sectionCategory'
 import ItemList from './itemList'
 
 /**
-* @description Rendering a list of books passed on filter
+* @description Render a list of books passed on filter
 * @param {object} books - List of books
 * @param {function} onUpdate - Function passed by props
 * @param {string} category - Category passed by filter
