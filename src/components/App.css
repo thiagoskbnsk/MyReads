@@ -7,26 +7,60 @@ body {
 }
 
 body, .app {
-  background: white;
+  background: #f2f5f8;
 }
 
 
 /* main page */
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: #3693e9;
   text-align: center;
+  height: 300px;
 }
 
 .list-books-title h1 {
-  font-weight: 400;
+  font-weight: 100;
   margin: 0;
   color: white;
 }
 
 .list-books-content {
-  padding: 0 0 80px;
+  padding: 15px 0;
   flex: 1;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #fff;
+  margin-bottom: 50px;
+  min-height: 190px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+@media(min-width: 576px) {
+    .list-books-content {
+        max-width: 540px;
+    }
+}
+
+@media(min-width: 768px) {
+    .list-books-content {
+        max-width: 720px;
+    }
+}
+
+@media(min-width: 992px) {
+    .list-books-content {
+        max-width: 960px;
+    }
+}
+
+@media(min-width: 1200px) {
+    .list-books-content {
+        max-width: 1140px;
+    }
 }
 
 .bookshelf {
@@ -41,6 +75,7 @@ body, .app {
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  margin: 0;
 }
 
 .bookshelf-books {
@@ -58,7 +93,7 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #4983BB;
   background-image: url(../icons/add.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -145,6 +180,7 @@ body, .app {
 .book-title,
 .book-authors {
   font-size: 0.8em;
+  font-weight: 500;
 }
 
 .book-title {
@@ -169,7 +205,7 @@ body, .app {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #337ab7;
   background-image: url(../icons/arrow-drop-down.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -197,4 +233,60 @@ body, .app {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+
+/* section children */
+@keyframes eclipse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes eclipse {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.eclipse {
+  position: relative;
+  top: 50px;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+
+.eclipse div {
+  position: absolute;
+  -webkit-animation: eclipse 1s linear infinite;
+  animation: eclipse 1s linear infinite;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  box-shadow: 0 3px 0 0 #3693e9;
+  -webkit-transform-origin: 25px 27px;
+  transform-origin: 25px 27px;
 }

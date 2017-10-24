@@ -15,13 +15,13 @@ export function categoryBooks(books, onUpdate, category) {
         return (
             books.sort(sortBy('title')).filter((b) => b.shelf === category).map((b) => (
                 <ItemList title={b.title} authors={[b.authors]} image={b.imageLinks.thumbnail} key={b.id} id={b.id} category={b.shelf ? b.shelf : 'none'} book={b} onUpdateBook={onUpdate}/>
-            ));
+            ))
         );
     } else {
         return (
             books.sort(sortBy('title')).map((b) => (
                 <ItemList title={b.title} authors={[b.authors]} image={b.imageLinks.thumbnail} key={b.id} id={b.id} category={b.shelf ? b.shelf : 'none'} book={b} onUpdateBook={onUpdate}/>
-            ));
+            ))
         );
     }
 }
@@ -41,7 +41,9 @@ export default props => (
                 </SectionCategory>
             </div>
         ) : (
-            <p>loading...</p>
+            <div className="eclipse">
+                <div></div>
+            </div>
         )}
     </div>
 )
