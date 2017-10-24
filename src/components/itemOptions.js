@@ -26,7 +26,7 @@ const categories = [
         value: 'none',
         disabled: false
     }
-]
+];
 
 export default props => (
     <select value={props.selected} onChange={props.eventChange}>

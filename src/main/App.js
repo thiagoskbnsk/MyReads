@@ -26,42 +26,42 @@ class BooksApp extends Component {
     updateQuery = (query) => {
         this.setState({
             query: query.trim()
-        }, this.updateListSearch)
+        }, this.updateListSearch);
     }
 
     /**
     * @description Does a search on a bookAPI if query passed is allowed on terms: "https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md".
     */
     updateListSearch() {
-        let query = this.state.query
+        let query = this.state.query;
 
-        const terms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
+        const terms = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'];
 
         // verifies if query is on the terms
         if(terms.indexOf(query) >= 0) {
             BooksAPI.search(query, 20).then(resultSearch => {
                 new Promise((resolve) => {
                     // return an array with all books in shelf
-                    resolve(this.state.books.map((b) => b.id))
+                    resolve(this.state.books.map((b) => b.id));
                 }).then((result) => {
                     // does a loop to verify if the result has in state
                     resultSearch.map((resultSearchItem, index) => {
                         if(result.indexOf(resultSearchItem.id) >= 0)
-                            resultSearch[index] = this.state.books[result.indexOf(resultSearchItem.id)] // if it is in the state, save the state instead of the result
-                        return resultSearch
+                            resultSearch[index] = this.state.books[result.indexOf(resultSearchItem.id)]; // if it is in the state, save the state instead of the result
+                        return resultSearch;
                     })
-                    return resultSearch
+                    return resultSearch;
                 }).then((resultSearch) => {
                     // save a new state to resultSearch
                     this.setState({
                         resultSearch
-                    })
+                    });
                 })
             }).catch((err) => {
-                this.clearSearch()
+                this.clearSearch();
             })
         } else {
-            this.clearSearch()
+            this.clearSearch();
         }
     }
 
@@ -69,7 +69,7 @@ class BooksApp extends Component {
     * @description Clear resultSearch state
     */
     clearSearch() {
-        this.setState({ resultSearch: '' })
+        this.setState({ resultSearch: '' });
     }
 
     /**
@@ -79,8 +79,8 @@ class BooksApp extends Component {
     */
     updateBook = (book, value) => {
         BooksAPI.update(book, value).then((books) => {
-            this.getData()
-        })
+            this.getData();
+        });
     }
 
     /**
@@ -90,8 +90,8 @@ class BooksApp extends Component {
         BooksAPI.getAll().then((books) => {
             this.setState({
                 books: books
-            })
-        })
+            });
+        });
     }
 
     render() {

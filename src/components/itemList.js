@@ -10,16 +10,16 @@ class ItemList extends Component {
     componentDidMount() {
         this.setState({
             category: this.props.category
-        })
+        });
     }
 
     /**
     * @description Call a function which was declare in App.js
     */
     handleClick = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (this.props.onUpdateBook)
-            this.props.onUpdateBook(this.props.book, e.target.value)
+            this.props.onUpdateBook(this.props.book, e.target.value);
     }
 
     render() {
