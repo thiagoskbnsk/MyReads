@@ -88,7 +88,7 @@ class BooksApp extends Component {
     */
     getData() {
         BooksAPI.getAll().then((books) => {
-            this.setState({ books });
+            this.setState({ books }, this.updateListSearch);
         });
     }
 
