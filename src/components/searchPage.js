@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { renderBooks } from '../components/shelfPage'
+import { renderBooks } from './shelfPage'
 
 const SearchPage = props => (
     <div className="search-books">

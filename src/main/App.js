@@ -12,7 +12,7 @@ class BooksApp extends Component {
     state = {
         books: [],
         query: '',
-        resultSearch: ''
+        resultSearch: []
     }
 
     componentDidMount() {
@@ -78,8 +78,8 @@ class BooksApp extends Component {
     * @param {string} value - Shelf value
     */
     updateBook = (book, value) => {
-        BooksAPI.update(book, value).then((books) => {
-            this.getData();
+        BooksAPI.update(book, value).then((resolve) => {
+            this.getData()
         });
     }
 
@@ -88,9 +88,7 @@ class BooksApp extends Component {
     */
     getData() {
         BooksAPI.getAll().then((books) => {
-            this.setState({
-                books: books
-            });
+            this.setState({ books });
         });
     }
 
