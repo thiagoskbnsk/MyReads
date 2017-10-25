@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import ItemOptions from './itemOptions'
 
@@ -22,6 +23,14 @@ class ItemList extends Component {
             this.props.onUpdateBook(this.props.book, e.target.value);
     }
 
+    renderAuthors(authors) {
+        return (
+            authors.map((a, item) => (
+                <div className="book-authors" key={item}>{a}</div>
+            ))
+        )
+    }
+
     render() {
         return (
             <li>
@@ -33,13 +42,20 @@ class ItemList extends Component {
                         </div>
                     </div>
                     <div className="book-title">{this.props.title}</div>
-                    {this.props.authors.map((a, item) => (
-                        <div className="book-authors" key={item}>{a}</div>
-                    ))}
+                    {this.renderAuthors(this.props.authors)}
                 </div>
             </li>
         )
     }
+}
+
+ItemList.propTypes = {
+    image: PropTypes.string,
+    category: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    authors: PropTypes.array,
+    onUpdateBook: PropTypes.func.isRequired,
+    book: PropTypes.object.isRequired
 }
 
 export default ItemList

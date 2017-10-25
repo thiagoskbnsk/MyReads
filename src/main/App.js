@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 
-import SectionChildren from '../components/sectionChildren'
+import ShelfPage from '../components/shelfPage'
 import SearchPage from '../components/searchPage'
 
 import * as BooksAPI from '../utils/BooksAPI'
@@ -103,7 +103,7 @@ class BooksApp extends Component {
                             <h1>MyReads</h1>
                         </div>
                         <div className="list-books-content">
-                            <SectionChildren books={this.state.books} onUpdateBook={(b,v) => this.updateBook(b, v)}/>
+                            <ShelfPage books={this.state.books} onUpdateBook={(b,v) => this.updateBook(b, v)}/>
                         </div>
                         <div className="open-search">
                             <Link to='/search' onClick={() => this.clearSearch()} >Add a book</Link>

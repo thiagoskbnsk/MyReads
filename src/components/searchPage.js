@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-import { categoryBooks } from '../components/sectionChildren'
+import { renderBooks } from '../components/shelfPage'
 
-export default props => (
+const SearchPage = props => (
     <div className="search-books">
         <div className="search-books-bar">
             <Link className="close-search" to='/'>Close</Link>
@@ -14,7 +15,7 @@ export default props => (
         <div className="search-books-results">
             <ol className="books-grid">
                 {props.books ? (
-                    categoryBooks(props.books, props.onUpdateBook)
+                    renderBooks(props.books, props.onUpdateBook)
                 ) : (
                     <div className="no-results">
                         <p>Didn't find what you wanted? Don't worry! You can search for one of these terms:</p>
@@ -25,3 +26,11 @@ export default props => (
         </div>
     </div>
 )
+
+SearchPage.PropTypes = {
+    onChangeInput: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired,
+    onUpdateBook: PropTypes.func.isRequired
+}
+
+export default SearchPage

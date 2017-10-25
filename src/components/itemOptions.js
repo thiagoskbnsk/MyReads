@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const categories = [
     {
@@ -28,10 +29,17 @@ const categories = [
     }
 ];
 
-export default props => (
+const ItemOptions = props => (
     <select value={props.selected} onChange={props.eventChange}>
         {categories.map((c) => (
             <option key={c.name} value={c.value} disabled={c.disabled}>{c.name}</option>
         ))}
     </select>
 )
+
+ItemOptions.propTypes = {
+    selected: PropTypes.string.isRequired,
+    eventChange: PropTypes.func.isRequired
+}
+
+export default ItemOptions
