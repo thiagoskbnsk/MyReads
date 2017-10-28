@@ -21,28 +21,24 @@ class SearchPage extends Component {
     * @param {string} query - The value of user entered
     */
     updateQuery = (query) => {
-        this.setState({ query },
-            () => {
-                if(query.length > 0) {
-                    this.searchBook()
-                }
-            }
-        )
+        this.setState({ query }, this.searchBook())
     }
 
     /**
     * @description Does a search on a bookAPI if query passed is allowed on terms: "https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md".
     */
     searchBook() {
-        BooksAPI.search(this.state.query, 20).then((books) => {
-            if(Array.isArray(books)) {
-                this.setState(state => ({
-                    resultSearch: this.setCategory(books)
-                }))
-            } else {
-                this.setState({ resultSearch: [] })
-            }
-        })
+        if(query.length > 0) {
+            BooksAPI.search(this.state.query, 20).then((books) => {
+                if(Array.isArray(books)) {
+                    this.setState(state => ({
+                        resultSearch: this.setCategory(books)
+                    }))
+                } else {
+                    this.setState({ resultSearch: [] })
+                }
+            })
+        }
     }
 
     setCategory(books) {
@@ -50,18 +46,14 @@ class SearchPage extends Component {
             b.shelf = 'none'
             return b
         })
-
         this.props.books.map((book) => {
             const index = books.findIndex(b => b.id === book.id)
             if(index >= 0)
                 books[index].shelf = book.shelf
             return book
         })
-
         return books;
     }
-
-
 
     render() {
         return (
