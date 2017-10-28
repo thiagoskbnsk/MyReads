@@ -11,7 +11,7 @@ import ItemList from './itemList'
 * @param {function} onUpdate - Function passed by props
 * @param {string} category - Category passed by filter
 */
-export function renderBooks(books, onUpdate, category) {
+export const renderBooks = (books, onUpdate, category) => {
     if (category) {
         return (
             books.sort(sortBy('title')).filter((b) => b.shelf === category).map((b) => (

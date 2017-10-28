@@ -1,53 +1,36 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import ItemOptions from './itemOptions'
 
-class ItemList extends Component {
-    state = {
-        category: ''
-    }
-
-    componentDidMount() {
-        this.setState({
-            category: this.props.category
-        });
-    }
-
-    /**
-    * @description Call a function which was declare in App.js
-    */
-    handleClick = (e) => {
-        e.preventDefault();
-        if (this.props.onUpdateBook)
-            this.props.onUpdateBook(this.props.book, e.target.value);
-    }
-
-    renderAuthors(authors) {
-        return (
-            authors.map((a, item) => (
-                <div className="book-authors" key={item}>{a}</div>
-            ))
-        )
-    }
-
-    render() {
-        return (
-            <li>
-                <div className="book">
-                    <div className="book-top">
-                        <div className="book-cover" style={{ backgroundImage: `url(${this.props.image})` }}></div>
-                        <div className="book-shelf-changer">
-                            <ItemOptions selected={this.state.category} eventChange={this.handleClick} />
-                        </div>
-                    </div>
-                    <div className="book-title">{this.props.title}</div>
-                    {this.renderAuthors(this.props.authors)}
-                </div>
-            </li>
-        )
-    }
+const handleClick = (e, onUpdateBook, book) => {
+    e.preventDefault();
+    if (onUpdateBook)
+        onUpdateBook(book, e.target.value);
 }
+
+const renderAuthors = (authors) => {
+    return (
+        authors.map((a, item) => (
+            <div className="book-authors" key={item}>{a}</div>
+        ))
+    )
+}
+
+const ItemList = props => (
+    <li>
+        <div className="book">
+            <div className="book-top">
+                <div className="book-cover" style={{ backgroundImage: `url(${props.image})` }}></div>
+                <div className="book-shelf-changer">
+                    <ItemOptions selected={props.category} eventChange={(e) => handleClick(e, props.onUpdateBook, props.book)} />
+                </div>
+            </div>
+            <div className="book-title">{props.title}</div>
+            {renderAuthors(props.authors)}
+        </div>
+    </li>
+)
 
 ItemList.propTypes = {
     image: PropTypes.string,
