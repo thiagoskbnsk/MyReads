@@ -28,7 +28,7 @@ class SearchPage extends Component {
     * @description Does a search on a bookAPI if query passed is allowed on terms: "https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md".
     */
     searchBook() {
-        if(query.length > 0) {
+        if(this.state.query.length > 0) {
             BooksAPI.search(this.state.query, 20).then((books) => {
                 if(Array.isArray(books)) {
                     this.setState(state => ({
